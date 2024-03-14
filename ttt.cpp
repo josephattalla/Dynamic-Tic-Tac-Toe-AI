@@ -8,6 +8,7 @@ ttt::ttt()
 {
     dimensions = 3;
     board = vector< vector<char> >(dimensions, vector<char>(dimensions, ' '));
+    depth = 5;
 }
 
 
@@ -22,6 +23,22 @@ ttt::ttt(const int& dimensions)
         this->dimensions = dimensions;
     }
     board = vector< vector<char> >(dimensions, vector<char>(dimensions, ' '));
+    depth = 5;
+}
+
+
+ttt::ttt(const int& dimensions, const int& depth)
+{
+    if (dimensions < 3)
+    {
+        this->dimensions = 3;
+    }
+    else
+    {
+        this->dimensions = dimensions;
+    }
+    board = vector< vector<char> >(dimensions, vector<char>(dimensions, ' '));
+    this->depth = depth;
 }
 
 
@@ -554,9 +571,6 @@ vector<int> ttt::minimax()
     // variable to hold the best action
     vector<int> best_action;
 
-    // depth limit 
-    int depth = 5;
-
     // if  p1('X') turn, we want to maximize alpha
     if (player() == p1)
     {
@@ -604,7 +618,7 @@ vector<int> ttt::minimax()
 }
 
 
-int ttt::max_value(const vector< vector<char> >& b, const int& beta, const int& depth)
+int ttt::max_value(const vector< vector<char> >& b, const int& beta, const int& d)
 {
     /*
         Returns the maximum outcome of the current board. 
@@ -618,7 +632,7 @@ int ttt::max_value(const vector< vector<char> >& b, const int& beta, const int& 
     }
 
     // if depth is reached, return evaluation of the current baord
-    if (depth == 0)
+    if (d == 0)
     {
         return evaluation(b);
     }
@@ -633,7 +647,7 @@ int ttt::max_value(const vector< vector<char> >& b, const int& beta, const int& 
     for (int i = 0; i < actions_.size(); i++)
     { 
         // set alpha to the max of the current alpha, and the best outcome of the other player given the current action and decrement depth to account for this iteration
-        alpha = max(alpha, min_value(result(b, actions_[i]), alpha, depth-1));
+        alpha = max(alpha, min_value(result(b, actions_[i]), alpha, d-1));
 
         // if the alpha we found is greater than or equal to the beta passed in, then there is already a better outcome for the minimizing player, so we can prune this branch
         if (alpha >= beta)
@@ -646,7 +660,7 @@ int ttt::max_value(const vector< vector<char> >& b, const int& beta, const int& 
 }
 
 
-int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int& depth)
+int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int& d)
 {
     /*
         Returns the minimum outcome of the current board. 
@@ -660,7 +674,7 @@ int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int&
     }
 
     // if depth is reached, return evaluation of the current baord
-    if (depth == 0)
+    if (d == 0)
     {
         return evaluation(b);
     }
@@ -675,7 +689,7 @@ int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int&
     for (int i = 0; i < actions_.size(); i++)
     {
         // set beta to the min of the current beta, and the best outcome of the other player given the current action and decrement depth to account for this iteration
-        beta = min(beta, max_value(result(b, actions_[i]), beta, depth-1));
+        beta = min(beta, max_value(result(b, actions_[i]), beta, d-1));
 
         // if the beta we found is less than or equal to the alpha passed in, then there is already a better outcome for the maximizing player, so we can prune this branch
         if (beta <= alpha)
@@ -683,6 +697,6 @@ int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int&
             break;
         }
     }
-    
+
     return beta;
 }

@@ -4,7 +4,7 @@
 
 int main()
 {
-    ttt t(5);
+    ttt t(10, 3);
 
     while (!t.terminal())
     {

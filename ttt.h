@@ -14,6 +14,7 @@ class ttt
         int dimensions;
         char p1 = 'X';
         char p2 = 'O';
+        int depth;
         
         /*
             ---------functions--------
@@ -32,10 +33,10 @@ class ttt
         int utility(const vector< vector<char> >& b);
 
         // returns the max utility/evaluation outcome of the board, implements alpha-beta prunging and depth limited search
-        int max_value(const vector< vector<char> >& b, const int& beta, const int& depth);
+        int max_value(const vector< vector<char> >& b, const int& beta, const int& d);
 
         // returns the minimum utility/evaluation outcome of the board, implements alpha-beta prunging and depth limited search
-        int min_value(const vector< vector<char> >& b, const int& alpha, const int& depth);
+        int min_value(const vector< vector<char> >& b, const int& alpha, const int& d);
 
         // returns the player whose turn it is given a state of the board
         char player(const vector< vector<char> >& b);
@@ -60,6 +61,9 @@ class ttt
 
         // sets the dimensions to the given dimensions and initiates the board by putting ' ' into a dimensionxdimension char array
         ttt(const int& dimensions);
+
+        // sets the dimensions and depth
+        ttt(const int& dimensions, const int& depth);
 
         /*
             ---------functions----------
