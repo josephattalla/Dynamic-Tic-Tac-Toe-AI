@@ -85,7 +85,7 @@ class ttt
         vector<int> minimax();
 
         // returns true if the move is valid
-        bool valid_move(const int& row, const int& col);
+        bool validMove(const int& row, const int& col);
 
         // puts the player whose turn it is on the position x, y on the board
         void turn(const int& row, const int& col);

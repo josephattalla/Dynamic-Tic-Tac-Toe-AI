@@ -143,7 +143,7 @@ char ttt::player(const vector< vector<char> >& b)
 }
 
 
-bool ttt::valid_move(const int& row, const int& col)
+bool ttt::validMove(const int& row, const int& col)
 {
     return row < dimensions && row >= 0 && col < dimensions && col >= 0 && board[row][col] == ' ';
 }
@@ -346,7 +346,7 @@ char ttt::winner(const vector< vector<char> >& b)
 
 void ttt::turn(const int& row, const int& col)
 {
-    if (!valid_move(row, col))
+    if (!validMove(row, col))
     {
         cout << "ERROR: INVALID MOVE" << endl;
         return;
