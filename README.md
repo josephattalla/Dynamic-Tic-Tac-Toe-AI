@@ -31,7 +31,7 @@ To play against the minimax algorithm:
 To play against the minimax algorithm:
 
 ```shell
-oython3 play.py <board size> <depth of minimax algorithm>
+python3 play.py <board size> <depth of minimax algorithm>
 ```
 - default board size is 3
 - default depth is 10
