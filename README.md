@@ -10,7 +10,7 @@ This repository contains implementations of a variable-length Tic-Tac-Toe minima
 - `play.cpp` and `play.out`: C++ programs and executable used to play against the minimax algorithm. Can be used with `play.out <board size> <depth of minimax algorithm>`.
 - `ttt.py`: Python script containing the implementation of the Tic-Tac-Toe minimax class in Python.
 - `driver.py`: Python script used to run the minimax algorithm at different sizes of the board and input the time into a CSV file.
-- `play.py`: Python script used to play against the minimax algorithm. Can be used with `play.out <board size> <depth of minimax algorithm>`.
+- `play.py`: Python script used to play against the minimax algorithm. Can be used with `python3 play.py <board size> <depth of minimax algorithm>`.
 - `python.csv` and `cpp.csv`: CSV files storing the runtime from the drivers of each in the form: board size, depth, execution time.
 - `data_collection.sh`: Shell script that runs the drivers of each program for board sizes 3-10, 10 times each.
 
