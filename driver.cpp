@@ -28,8 +28,8 @@ int main(int argc, char* argv[])
         t.turn(move[0], move[1]);
     }
 
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> elapsed = end - start;
 
     ofstream fout("cpp.csv", ios_base::app);
     string data = to_string(board_size) + "," + to_string(depth) + "," + to_string(elapsed.count()) + "\n";
