@@ -44,5 +44,5 @@ The `data_collection.sh` script can be used to collect runtime data for both C++
 
 ![Board Size vs Execution Time Plot](Board_Size_vs_Execution_Time_Plot.png)
 
-The plot shows the execution time and board sizes for both C++ and Python implementations. It illustrates that the execution times are similar for board sizes 3-5, but C++ is much faster afterward.
+The plot shows the execution time and board sizes for both C++ and Python implementations. It illustrates that the execution times are similar for board sizes 3-5, but C++ is much faster afterward
 
