@@ -38,7 +38,7 @@ python3 play.py <board size> <depth of minimax algorithm>
 
 ## Data Collection and Analysis
 
-The `data_collection.sh` script can be used to collect runtime data for both C++ and Python implementations. The collected data is stored in `python.csv` and `cpp.csv`. The `analysis.ipynb` Jupyter notebook contains code to analyze the data and generate plots.
+The `data_collection.sh` script can be used to collect runtime data for both C++ and Python implementations. The collected data is stored in `python.csv` and `cpp.csv`. The `analysis.ipynb` Jupyter notebook contains code to generate a plot.
 
 ## Plots
 
