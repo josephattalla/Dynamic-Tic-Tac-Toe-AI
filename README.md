@@ -1,4 +1,4 @@
-# Variable Length Tic-Tac-Toe Minimax Algorithm
+# Dynamic Tic-Tac-Toe Minimax Algorithm
 
 This repository contains implementations of a variable-length Tic-Tac-Toe minimax algorithm in both C++ and Python. The algorithm is capable of playing Tic-Tac-Toe on boards of different sizes and utilizes the minimax algorithm with alpha-beta pruning for decision-making. Additionally, depth limitation is implemented to optimize the search process.
 
