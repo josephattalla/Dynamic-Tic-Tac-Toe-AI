@@ -23,11 +23,23 @@ Image provided by https://cs50.harvard.edu/ai/2024/notes/0/
 
 - Green is an optimizing player, red is a minimzing player
 - The first state has 3 possible actions
-- These actions put the state into the opponents turn, the opponent is the minimizing player and when their optimal actions are taken, the end game value is given in them
+- These actions put the state into the opponents turn, the opponent is the minimizing player and when their optimal actions are taken, the end game value is the number within their triangle
 - The top state chooses the max of these actions which is 9
 
 
-If we do this for every possible state in a 3x3 tic tac toe, we would explore around 260,000 outcomes. As the board expands, this gets much larger and will result in very large execution times. To optimize this, there are 2 
+## Optimization
+
+If we do this for every possible state in a 3x3 tic tac toe, we would explore around 260,000 outcomes. As the board expands, this gets much larger and will result in very large execution times. To optimize this, I implemented 2 methods that significantly decrease how many states are explored.
+
+1. Alpha-Beta Pruning
+    - Reduces the states explored by holding the max value the maximizing player has found (alpha) and the min value the minimzing player has found (beta)
+    - If the action being explored will not be better than the value that has been already found, then we stop exploring that action
+
+    - ![](image.png) image provided by https://cs50.harvard.edu/ai/2024/notes/0/
+        - In the first action explored (left most minimzing player) the value we get is 4 and will be the current alpha, the next action explored we see that the minimizing player gets a 3, which is less than our alpha 4 and from there the minimzing player would only make the number even lower so we can stop exploring that action because we know there is a better one. The last action explored the minimzing player gets a 2, which is worse than our alpha so we can stop exploring that action.
+
+2. Depth Limited Search
+    - Alpha-beta pruning reduces runtime at each state, but there will still be many states to explore. To reduce the amount of states to explore I implemented a depth limited search. Given a certain depth, we explore that many levels down from the current state to determine the best action. By doing this we cannot get the end game value, so we estimate it using some heurstic function. The heuristic I used was the amount of winning oppurtunities available, by finding how many continuous dimension-length openings for a given player there are. The player with most winning oppurtunities is the predicted winner.
 
 ## Data Collection and Analysis
 
