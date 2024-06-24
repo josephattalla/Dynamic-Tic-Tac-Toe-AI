@@ -49,5 +49,5 @@ The `data_collection.sh` script can be used to collect runtime data for both C++
 ## Execution Time vs Depth
 
 ![Execution Time vs Depth](plot.png)
-
+Note: *The lower the depth, the higher chance the action taken is not the most optimal due to increase of unknown states.*
 
