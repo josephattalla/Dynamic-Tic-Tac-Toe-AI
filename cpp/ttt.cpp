@@ -700,3 +700,9 @@ int ttt::min_value(const vector< vector<char> >& b, const int& alpha, const int&
 
     return beta;
 }
+
+
+vector< vector<char> > ttt::getBoard()
+{
+    return board;
+}

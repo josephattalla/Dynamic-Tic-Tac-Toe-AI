@@ -23,8 +23,6 @@ class ttt
         // returns the inital state of the board --- an empty board
         vector< vector<char> > initial_state();
 
-        // returns all possible actions on the board in a vector of (row, col) vectors
-        vector< vector<int> > actions(const vector< vector<char> >& b);
 
         // returns the resulting board given the current board and an action
         vector< vector<char> > result(const vector< vector<char> >& b,const vector<int>& action);
@@ -69,6 +67,9 @@ class ttt
             ---------functions----------
         */
 
+       // returns all possible actions on the board in a vector of (row, col) vectors
+        vector< vector<int> > actions(const vector< vector<char> >& b);
+
         // print board 
         void printBoard();
         
@@ -89,4 +90,7 @@ class ttt
 
         // puts the player whose turn it is on the position x, y on the board
         void turn(const int& row, const int& col);
+
+        // getter for the board
+        vector< vector<char> > getBoard();
 };
