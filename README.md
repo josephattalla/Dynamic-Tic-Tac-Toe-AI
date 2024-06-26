@@ -1,18 +1,26 @@
-# Dynamic Tic-Tac-Toe Minimax Algorithm
+# Dynamic Tic-Tac-Toe AI Algorithm
 
-This repository contains implementations of a variable-length Tic-Tac-Toe minimax algorithm in both C++ and Python. The algorithm is capable of playing Tic-Tac-Toe on boards of different sizes and utilizes the minimax algorithm for decision-making. Additionally, alpha-beta pruning and depth limitation is implemented to optimize the search process.
+This repository contains implementations of a variable-length Tic-Tac-Toe minimax algorithm in both C++ and Python. The AI is capable of playing Tic-Tac-Toe on boards of different sizes and utilizes the minimax algorithm for decision-making. Additionally, alpha-beta pruning and depth limitation is implemented to optimize the search process.
 
 ## Files
 
-- `ttt.h`: Header file containing the definition of the Tic-Tac-Toe minimax class in C++.
-- `ttt.cpp`: Source file containing the definitions of the functions and methods of the Tic-Tac-Toe minimax class in C++.
-- `driver.cpp`: C++ program used to run the minimax algorithm at different sizes of the board and input the time into a CSV file.
-- `play.cpp`: C++ programs and executable used to play against the minimax algorithm. Can be compiled, then used with `play.out <board size> <depth of minimax algorithm>`.
-- `ttt.py`: Python script containing the implementation of the Tic-Tac-Toe minimax class in Python.
-- `driver.py`: Python script used to run the minimax algorithm at different sizes of the board and input the time into a CSV file.
-- `play.py`: Python script used to play against the minimax algorithm. Can be used with `python3 play.py <board size> <depth of minimax algorithm>`.
-- `python.csv` and `cpp.csv`: CSV files storing the runtime from the drivers of each in the form: board size, depth, execution time.
-- `data_collection.sh`: Shell script that runs the drivers of each program for board sizes 3-10, each with different depths.
+- `cpp/` contains the C++ code.
+- `python/` contains the Python code.
+- `data/` contains the bash script and drivers used to test, and the csv's storing the results.
+- `analysis.ipynb` is the Jupyter Notebook used to visualize testing results.
+
+## Usage
+
+**Python**
+```
+python3 python/play.py <board size> <depth>
+```
+
+**C++**
+```
+g++ cpp/play.cpp cpp/ttt.cpp -o play
+./play <board size> <depth>
+```
 
 ## Minimax Algorithm
 
@@ -42,12 +50,23 @@ If we do this for every possible board state in a 3x3 tic tac toe, we would expl
 2. Depth Limited Search
     - Alpha-beta pruning reduces runtime at each state, but there will still be many states to explore. To reduce the amount of states to explore I implemented a depth limited search. Given a certain depth, we explore that many levels down from the current state to determine the best action. By doing this we cannot get the end game value, so we estimate it using a heurstic function. The heuristic I used was the amount of winning oppurtunities available, by finding how many continuous dimension-length openings for a given player there are. The player with most winning oppurtunities is the predicted winner.
 
-## Data Collection and Analysis
+## Testing
 
-The `data_collection.sh` script can be used to collect runtime data for both C++ and Python implementations. The collected data is stored in `python.csv` and `cpp.csv`. The `analysis.ipynb` Jupyter notebook contains code to generate a plot.
+To test the execution time and the AI's ability to make the best possible move, I created a driver for each language in which the AI plays against random moves. I did this for board sizes 3-6 and depths of 1-5, 5 times for each combination.
 
-## Execution Time vs Depth
+###### Execution Time vs Depth
+![Execution Time vs Depth](plots/Execution%20Time%20vs%20Depth.png)
 
-![Execution Time vs Depth](plot.png)
-Note: *The lower the depth, the higher chance the action taken is not the most optimal due to increase of unknown states.*
+###### Losses vs Board Size
+![Losses vs Board Size](plots/Number%20of%20losses%20per%20Board%20Size.png)
 
+###### Losses vs Depth
+![Losses vs Depth](plots/Number%20of%20losses%20per%20Depth.png)
+
+## Results Interpretation
+
+###### Execution Time
+C++ is significantly faster as exepcted, but only for a board size of 5. It seems as board size and depth increase, execution time increases exponentially. For Python, growth of the exponential is greater.
+
+###### Decision Making
+For a board size of 3, the AI seems to be able to find the best possible action with no 0 losses. At board sizes greater than 3, the AI does worse, and at a board size of 6 the AI does the worst with 23 total losses. Additionally, depth plays a crucial role in the decision making. At a depth of 5, the AI does best with 0 losses. Depth sizes lower than 5, the AI struggles to find the best possible action as it has more guesswork to do. The AI does worst at a depth of 1 with 16 total losses, and interestingly a depth of 2 does second best with a total of 7 losses. Strangely, C++ has more losses than Python although the AI is identical. This is likely due to the fact the opponent is making random moves.
