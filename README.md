@@ -26,7 +26,7 @@ g++ cpp/play.cpp cpp/ttt.cpp -o play
 
 The minimax algorithm is used to find the best possible move to make. This is done by first choosing who is the minimizing and maximizing player. The maximizing player wants the end value of the game to be as big as possible, and the minimizing player want the end value of the game to be as small as possible. If it is the maximizing player's turn, then we want to choose the action that has the best chance of resulting in the largest end value. To do this, we explore what will happen choosing each possible action. When we explore an action, if the game hasn't ended, we are now the oppenent (minimizing player), so we choose the best possible action for the minimizing player by exploring all actions they can take. This is done iteratively until we find the value of each action the curent player can take. By doing this, we can take the action that will most likely result in the best outcome for the current player.
 
-![image](https://github.com/josephattalla/Dynamic-Minimax/assets/121779512/b40fc2ca-dbcb-43f5-a136-43801afae68e)
+![Minimax Algorithm Diagram Example](https://github.com/josephattalla/Dynamic-Minimax/assets/121779512/b40fc2ca-dbcb-43f5-a136-43801afae68e)
 Image source: https://cs50.harvard.edu/ai/2024/notes/0/
 
 - Green is an optimizing player, red is a minimizing player
@@ -43,7 +43,7 @@ If we do this for every possible board state in a 3x3 tic tac toe, we would expl
     - Reduces the states explored by holding the max value the maximizing player has found (alpha) and the min value the minimzing player has found (beta)
     - If the action being explored will not be better than the value that has been already found, then we stop exploring that action
 
-    - ![](image.png) Image source: https://cs50.harvard.edu/ai/2024/notes/0/
+    - ![Minimax Alpha-Beta Pruning Algorithm Example](https://github.com/josephattalla/Dynamic-Tic-Tac-Toe-AI/assets/121779512/1bc24cf8-4374-40e2-b27d-7f8b64e2e3fc) Image source: https://cs50.harvard.edu/ai/2024/notes/0/
         - The top state is the maximizing player and is the current state
         - In the first action explored (left most minimizing player) the end game value we get by minimizing the end game value of the posible actions at that state is 4, and will be the current alpha. The next action explored (middle minimizing player) we see that the minimizing player gets a 3, which is less than our alpha, 4, and from there the minimzing player could only choose a number smaller than 3 so we know that action will not result in a better outcome for the maximizing player. The last action explored (right most minimizing player) the minimzing player gets a 2, which is worse than our alpha so we can stop exploring that action.
 
