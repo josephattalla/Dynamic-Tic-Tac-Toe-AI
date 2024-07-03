@@ -66,7 +66,7 @@ To test the execution time and the AI's ability to make the best possible move, 
 ## Results Interpretation
 
 ###### Execution Time
-C++ is significantly faster as exepcted, but only for a board size of 5. It seems as board size and depth increase, execution time increases exponentially. For Python, growth of the exponential is greater.
+C++ is significantly faster as exepcted, but is only noticeable for board sizes greater than 5. It seems as board size and depth increase, execution time increases exponentially. For Python, growth of the exponential is greater.
 
 ###### Decision Making
 For a board size of 3, the AI seems to be able to find the best possible action with no 0 losses. At board sizes greater than 3, the AI does worse, and at a board size of 6 the AI does the worst with 23 total losses. Additionally, depth plays a crucial role in the decision making. At a depth of 5, the AI does best with 0 losses. Depth sizes lower than 5, the AI struggles to find the best possible action as it has more guesswork to do. The AI does worst at a depth of 1 with 16 total losses, and interestingly a depth of 2 does second best with a total of 7 losses. Strangely, C++ has more losses than Python although the AI is identical. This is likely due to the fact the opponent is making random moves.
